@@ -26,7 +26,7 @@ model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50").to(DEV
 model.eval()
 
 # --- Load COCO Ground Truth ---
-print("\n🔎 Loading COCO validation annotations...")
+print("\n Loading COCO validation annotations...")
 coco_gt = COCO(VAL_ANN_FILE)
 image_ids = list(sorted(coco_gt.imgs.keys()))
 
@@ -44,7 +44,7 @@ for label_id, label_name in hf_id2label.items():
 # --- Collect Results for COCO Evaluation ---
 results_list = []
 
-print("\n🚀 Running COCO evaluation on val2017...")
+print("\n Running COCO evaluation on val2017...")
 for img_id in tqdm(image_ids[:500], desc="Evaluating on val images"):  # Use full list for full eval
     img_info = coco_gt.loadImgs(img_id)[0]
     img_path = VAL_IMG_DIR / img_info["file_name"]
@@ -82,10 +82,10 @@ with open(output_json, "w") as f:
     json.dump(results_list, f)
 
 # --- COCO Evaluation ---
-print("\n📊 Evaluating predictions using pycocotools...")
+print("\nEvaluating predictions using pycocotools...")
 coco_dt = coco_gt.loadRes(output_json)
 coco_eval = COCOeval(coco_gt, coco_dt, iouType="bbox")
 coco_eval.evaluate()
 coco_eval.accumulate()
-print("\n📈 Evaluation Results (COCO Metrics):")
+print("\n Evaluation Results (COCO Metrics):")
 coco_eval.summarize()
