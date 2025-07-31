@@ -7,4 +7,5 @@ As neural networks grow increasingly large to handle complex tasks, the computat
 cent vision models on large datasets, analyzing the trade-offs between model efficiency and accuracy degradation. We establish baseline accuracy for the models and then systematically apply structured, unstructured, and hybrid pruning strategies. The pruned models are
 compared across key metrics, including inference time, computational cost, and memory efficiency, to quantify the gains achieved by each approach. We investigate whether strategic pruning can facilitate the deployment of large-scale vision models on resource constrained edge devices while supporting sustainable energy objectives. We also try to determine how much pruning is allowed before there is an indicative drop in accuracy.
 
-
+## Directory Structure for the codebase
+![Directory Structure Image](https://github.com/JeevanLowrence/capstone2025-LowrenceJeevan_NeuralNetworkPruning/blob/main/Images/Directory%20Structure.png?raw=true)
